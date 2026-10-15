@@ -1,6 +1,6 @@
 {
   "name": "ccmx-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Claude Code multiplexer: several Claude Code profiles behind one command, with shared sessions and rate-limit handoff.",
   "type": "module",
   "author": "gadingnst",
