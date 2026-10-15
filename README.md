@@ -18,10 +18,28 @@ Profiles stay separate (own login, settings, plugins, history). ccmx never reads
 credentials and never edits your settings files; its hooks, statusline and slash commands
 are passed to `claude` per launch (`--settings`, `--plugin-dir`).
 
+## Requirements
+
+- **Claude Code CLI** (`claude` on your PATH). ccmx drives it and does not replace it.
+  Tested with 2.1.300; older versions may lack the hooks ccmx relies on. Install it with the
+  official installer, then check `claude --version`:
+
+  ```sh
+  curl -fsSL https://claude.ai/install.sh | bash   # macOS, Linux, WSL
+  brew install --cask claude-code                  # or with Homebrew
+  ```
+
+  Other methods: [Claude Code setup guide](https://code.claude.com/docs/en/setup).
+- **A Claude account per profile** with Claude Code access: Pro, Max, Team or Enterprise.
+  Console (API key) profiles work too, but have no usage windows for ccmx to switch on. Log
+  each profile in with `ccmx login <name>`.
+- **[Bun](https://bun.sh) 1.1+** on your PATH; ccmx runs on it.
+- **macOS or Linux**, WSL included. Native Windows is not supported: ccmx relies on POSIX
+  signals and `ps`. Developed and tested on macOS.
+
 ## Install
 
-ccmx runs on [Bun](https://bun.sh), so Bun must be on your PATH. The package is `ccmx-cli`;
-the command is `ccmx`.
+The package is `ccmx-cli`; the command is `ccmx`.
 
 ```sh
 npm i -g ccmx-cli      # or: bun add -g ccmx-cli

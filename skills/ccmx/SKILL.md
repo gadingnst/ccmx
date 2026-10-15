@@ -20,8 +20,13 @@ ccmx version        # ccmx and claude versions
 ccmx status --json  # profiles, usage, limits, running sessions, settings
 ```
 
+ccmx needs the Claude Code CLI: if `ccmx version` prints `claude not found`, nothing will
+run until it is installed (`curl -fsSL https://claude.ai/install.sh | bash`, see
+https://code.claude.com/docs/en/setup). Each profile also needs its own logged-in Claude
+account (Pro, Max, Team, Enterprise or Console).
+
 If `ccmx` is not found, it installs with `npm i -g ccmx-cli` (needs Bun on PATH;
-the command is still `ccmx`). Ask the user before installing.
+the command is still `ccmx`). Ask the user before installing either.
 
 ## Doing work: headless runs
 
