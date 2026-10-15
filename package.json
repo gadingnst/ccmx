@@ -1,0 +1,48 @@
+{
+  "name": "ccmx-cli",
+  "version": "0.1.0",
+  "description": "Claude Code multiplexer: several Claude Code profiles behind one command, with shared sessions and rate-limit handoff.",
+  "type": "module",
+  "author": "gadingnst",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "cli",
+    "profiles",
+    "multiplexer",
+    "rate-limit"
+  ],
+  "bin": {
+    "ccmx": "dist/cli.js"
+  },
+  "files": [
+    "dist/cli.js",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src tests",
+    "lint:fix": "biome check --write src tests",
+    "format": "biome format --write src tests",
+    "check": "bun run typecheck && bun run lint && bun run test",
+    "build": "bun run build:js && bun build --compile --minify src/cli.ts --outfile dist/ccmx",
+    "build:js": "bun build src/cli.ts --target=bun --minify --outfile dist/cli.js",
+    "prepublishOnly": "bun run check && bun run build:js"
+  },
+  "engines": {
+    "bun": ">=1.1.0"
+  },
+  "dependencies": {
+    "picocolors": "1.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/bun": "1.2.19",
+    "typescript": "5.8.3"
+  }
+}
