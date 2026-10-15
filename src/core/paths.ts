@@ -12,6 +12,14 @@ export const storeDir = () => join(ccmxDir(), 'projects');
 
 export const claudeBin = () => process.env.CCMX_CLAUDE || 'claude';
 
+export const CLAUDE_INSTALL_HINT =
+  'Install Claude Code: curl -fsSL https://claude.ai/install.sh | bash (or brew install --cask claude-code). More: https://code.claude.com/docs/en/setup';
+
+/** ccmx drives the Claude Code CLI; say so plainly when it is not there. */
+export function claudeAvailable(): boolean {
+  return Bun.which(claudeBin()) !== null;
+}
+
 /** The string hash Claude Code uses for long project folder names (Java's String.hashCode). */
 function stringHash(s: string): number {
   let h = 0;

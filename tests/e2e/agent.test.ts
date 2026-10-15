@@ -132,3 +132,15 @@ describe('headless -p', () => {
     expect(r.err).toContain('every profile is limited');
   });
 });
+
+describe('without the Claude Code CLI', () => {
+  it('says so plainly, with how to install it, instead of a spawn error', () => {
+    for (const args of [['-p', 'x'], ['login', 'alice'], []]) {
+      const r = sb.run(args, { CCMX_CLAUDE: '/nonexistent/claude' });
+      expect(r.code).toBe(1);
+      expect(r.err).toContain('Claude Code CLI not found');
+      expect(r.err).toContain('claude.ai/install.sh');
+    }
+    expect(json(sb.run(['help', '--json']).out).requires[0]).toContain('Claude Code CLI');
+  });
+});

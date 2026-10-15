@@ -7,7 +7,7 @@ import { type Config, loadConfig } from '@/core/config';
 import { runPrint } from '@/core/headless';
 import { type HistoryEntry, appendHistory } from '@/core/history';
 import { removeLaunchSettings, writeLaunchSettings, writePlugin } from '@/core/launchfiles';
-import { claudeBin, slugFor } from '@/core/paths';
+import { CLAUDE_INSTALL_HINT, claudeAvailable, claudeBin, slugFor } from '@/core/paths';
 import { type Profile, account, findProfile, profileEnv } from '@/core/profiles';
 import { poolFor } from '@/core/projects';
 import { type SessionState, endLive, listLive, writeLive } from '@/core/registry';
@@ -564,6 +564,9 @@ function withModel(args: string[], model: string | undefined): string[] {
 }
 
 export async function launch(parsed: Parsed): Promise<number> {
+  if (!claudeAvailable()) {
+    throw new CliError(`Claude Code CLI not found (\`${claudeBin()}\`). ${CLAUDE_INSTALL_HINT}`);
+  }
   const cfg = loadConfig();
   let cwd = process.cwd();
   if (parsed.resume === null && parsed.search) {

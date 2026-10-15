@@ -243,6 +243,11 @@ export function manifest() {
     description:
       'Claude Code multiplexer: runs Claude Code across several profiles (accounts), shares their sessions, and moves a session to another profile when one hits its usage limit.',
     usage: 'ccmx <command> [options] | ccmx [claude args…]',
+    requires: [
+      'Claude Code CLI (`claude` on PATH; tested with 2.1.300). Install: curl -fsSL https://claude.ai/install.sh | bash',
+      'Bun 1.1+ on PATH',
+      'one Claude account with Claude Code access per profile (Pro, Max, Team, Enterprise or Console)'
+    ],
     passthrough:
       "Arguments that are not a ccmx command go to claude unchanged. Claude Code's subcommands run on the default profile unless --as is given; -p runs on the profile with the most headroom.",
     agentNotes: [
