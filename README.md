@@ -1,5 +1,14 @@
 # ccmx
 
+[![npm](https://img.shields.io/npm/v/ccmx-cli?color=cb3837&logo=npm&label=npm)](https://www.npmjs.com/package/ccmx-cli)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-tested_2.1.300-d97757.svg?logo=claude&logoColor=white)](https://code.claude.com/docs)
+[![Bun](https://img.shields.io/badge/Bun-1.1+-fbf0df.svg?logo=bun&logoColor=black)](https://bun.sh)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPL--3.0--or--later-blue.svg)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa.svg?logo=github-sponsors)](https://github.com/sponsors/gadingnst)
+[![Trakteer](https://img.shields.io/badge/Trakteer-Dukung%20Kreator-red.svg)](https://trakteer.id/gadingnst)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Buy%20a%20Coffee-29abe0.svg?logo=ko-fi)](https://ko-fi.com/gadingnst)
+
 Claude Code multiplexer. Several Claude Code profiles (`~/.claude`, `~/.claude-<name>`)
 behind one command: every profile's sessions in one list, launches spread by usage, and
 when a profile hits its limit the running session moves to another profile and carries on.
@@ -11,12 +20,20 @@ are passed to `claude` per launch (`--settings`, `--plugin-dir`).
 
 ## Install
 
+ccmx runs on [Bun](https://bun.sh), so Bun must be on your PATH. The package is `ccmx-cli`;
+the command is `ccmx`.
+
+```sh
+npm i -g ccmx-cli      # or: bun add -g ccmx-cli
+ccmx version           # ccmx and the claude it drives
+```
+
+From source:
+
 ```sh
 git clone https://github.com/gadingnst/ccmx && cd ccmx
 bun install && bun link        # puts `ccmx` on PATH
 ```
-
-Or from npm (needs Bun): `npm i -g ccmx-cli`. The command is `ccmx`.
 
 Optional, interactive shells only (build tools keep `/usr/bin/cc`): `alias cc=ccmx`.
 
